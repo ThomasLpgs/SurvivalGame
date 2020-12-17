@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    static Animator anim;
 
     public CharacterController controller;
 
@@ -19,6 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -43,13 +50,25 @@ public class PlayerMovement : MonoBehaviour
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }*/
+            if(Input.GetButtonDown("Jump"))
+            {
+                anim.SetTrigger("isjumping");
+            }
             if(Input.GetKey(KeyCode.LeftShift) && z == 1)
             {
                 speed = sprintSpeed;
             }
-            else
+            else if(z == 1)
             {
                 speed = walkSpeed;
+                anim.SetBool("iswalking", true);
+                anim.SetBool("isidle", false);
+            }
+            else
+            {
+                anim.SetBool("iswalking", false);
+                anim.SetBool("isidle", true);
+
             }
         }
 
