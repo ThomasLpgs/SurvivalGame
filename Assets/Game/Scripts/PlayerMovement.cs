@@ -57,19 +57,31 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetKey(KeyCode.LeftShift) && z == 1)
             {
                 speed = sprintSpeed;
+                anim.SetBool("isrunning", true);
+                if(Input.GetButtonDown("Fire1"))
+                {
+                    anim.SetTrigger("dropkick");
+                }
             }
             else if(z == 1)
             {
                 speed = walkSpeed;
                 anim.SetBool("iswalking", true);
                 anim.SetBool("isidle", false);
+                anim.SetBool("isrunning", false);
             }
             else
             {
                 anim.SetBool("iswalking", false);
+                anim.SetBool("isrunning", false);
                 anim.SetBool("isidle", true);
 
             }
+            if(Input.GetButtonDown("Fire1"))
+            {
+                anim.SetTrigger("lowkick");
+            }
+
         }
 
 
