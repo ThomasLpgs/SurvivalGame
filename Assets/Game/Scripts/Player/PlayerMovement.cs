@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     static Animator anim;
-
+    public Player player;
     public CharacterController controller;
 
     public float speed = 0f;
@@ -46,21 +46,40 @@ public class PlayerMovement : MonoBehaviour
 
         if(isGrounded)
         {
-            /*if(Input.GetButtonDown("Jump"))
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }*/
             if(Input.GetButtonDown("Jump"))
             {
-                anim.SetTrigger("isjumping");
+                if(player.currentStamina > 20 && player.currentHunger > 0)
+                {
+                    //anim.SetTrigger("isjumping");
+                    player.usingStamina(20);
+                    player.Hungry(4); 
+                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                }
             }
             if(Input.GetKey(KeyCode.LeftShift) && z == 1)
             {
-                speed = sprintSpeed;
-                anim.SetBool("isrunning", true);
-                if(Input.GetButtonDown("Fire1"))
+                if(player.currentStamina > 0 && player.currentHunger > 0)
                 {
-                    anim.SetTrigger("dropkick");
+                    speed = sprintSpeed;
+                    anim.SetBool("isrunning", true);
+                    if(Input.GetButtonDown("Fire1"))
+                    {
+                        anim.SetTrigger("dropkick");
+                    }
+                    player.usingStamina(Time.deltaTime * 10);
+                    player.Hungry(Time.deltaTime * 2);
+                }
+                else
+                {
+                    speed = walkSpeed;
+                    anim.SetBool("iswalking", true);
+                    anim.SetBool("isidle", false);
+                    anim.SetBool("isrunning", false);
+                    if (player.currentStamina < player.maxStamina)
+                    {
+                        player.addStamina(Time.deltaTime * 10);
+                    }
+                    player.Hungry(Time.deltaTime);
                 }
             }
             else if(z == 1)
@@ -69,20 +88,37 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("iswalking", true);
                 anim.SetBool("isidle", false);
                 anim.SetBool("isrunning", false);
+                if (player.currentStamina < player.maxStamina)
+                {
+                    player.addStamina(Time.deltaTime * 10);
+                }
+                player.Hungry(Time.deltaTime);
             }
             else
             {
                 anim.SetBool("iswalking", false);
                 anim.SetBool("isrunning", false);
                 anim.SetBool("isidle", true);
-
+                if (player.currentStamina < player.maxStamina)
+                {
+                    player.addStamina(Time.deltaTime * 20);
+                }
             }
             if(Input.GetButtonDown("Fire1"))
             {
                 anim.SetTrigger("lowkick");
             }
-
+            /*if(player.currentHunger == 0)
+            {
+                player.TakeDamage(Time.deltaTime * 5);
+            }
+            else if(player.currentHunger == 100)
+            {
+                player.Heal(Time.deltaTime * 8);
+            }*/
         }
+
+        
 
 
         velocity.y += gravity * Time.deltaTime;

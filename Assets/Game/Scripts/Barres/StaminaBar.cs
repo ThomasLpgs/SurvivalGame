@@ -13,9 +13,9 @@ public class StaminaBar : MonoBehaviour
         slider.value = p_stamina;
     }
 
-    public void SetStamina(int p_stamina)
+    public void SetStamina(float p_stamina)
     {
-        slider.value = p_stamina;
+        slider.value = (int)p_stamina;
     }
 
 }
