@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 		}
     }
 
-	void TakeDamage(int p_damage)
+	public void TakeDamage(int p_damage)
 	{
 		currentHealth -= p_damage;
 
