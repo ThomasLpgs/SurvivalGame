@@ -1527,7 +1527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &385270503
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3487,6 +3487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100132, guid: 91d2fb8fbb39fab44b86ce07763f1e74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400132, guid: 91d2fb8fbb39fab44b86ce07763f1e74, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4372,7 +4376,7 @@ MonoBehaviour:
   maxzPos: 53
   yPos: 52
   nbOfEnemies: 10
-  timeToWaitBetweenEachEnemyCreation: 0.1
+  timeToWaitBetweenEachEnemyCreation: 1
 --- !u!4 &1794811742
 Transform:
   m_ObjectHideFlags: 0

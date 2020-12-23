@@ -25,6 +25,7 @@ public class EnemyLogic : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            //EnemiesSpawn.enemyCount -= 1;
         }
     }
 }
