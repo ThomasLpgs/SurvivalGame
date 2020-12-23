@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public int lowKickDamage = 10;
     public int dropKickDamage = 50;
-    public int maxDistance = 10;
+    public int maxDistance = 2;
     Animator anim;
 
     void Start()
