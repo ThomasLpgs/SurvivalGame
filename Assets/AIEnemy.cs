@@ -15,6 +15,7 @@ public class AIEnemy : MonoBehaviour
 	public int damagePerSecond = 10;
 	private float period = 1.0f;
 	private float time = 0.0f;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -30,7 +31,7 @@ public class AIEnemy : MonoBehaviour
 		{
 			//transform.LookAt(player);
 			render.material.color = Color.yellow;
-			lookAt();
+			LookAt();
 		} else
         {
 			render.material.color = Color.green;
@@ -39,7 +40,7 @@ public class AIEnemy : MonoBehaviour
 		if (distancefrom_player < agro_range)
 		{
 			render.material.color = Color.red;
-			attack();
+			Attack();
 		}
 
 		if (distancefrom_player < attack_range)
@@ -58,14 +59,16 @@ public class AIEnemy : MonoBehaviour
 		}
 	}
 
-	void lookAt()
+	void LookAt()
 	{
 		Quaternion rotation = Quaternion.LookRotation(player.transform.position - transform.position);
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
 	}
 
-	void attack()
+	void Attack()
 	{
 		transform.Translate(Vector3.forward * move_speed * Time.deltaTime);
 	}
+
+	
 }
