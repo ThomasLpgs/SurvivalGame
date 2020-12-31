@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public Player player;
     public CharacterController controller;
 
+   
+
     public float speed = 0f;
     public float walkSpeed = 10f;
     public float sprintSpeed = 15f;
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -107,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetButtonDown("Fire1"))
             {
                 anim.SetTrigger("lowkick");
+            
             }
             /*if(player.currentHunger == 0)
             {
