@@ -13,7 +13,7 @@ public class AIEnemy : MonoBehaviour
 	public float move_speed_walk = 1.0f;
 	public float damping = 6.0f;
 	//Renderer render;
-	private float nextActionTime = 0.0f;
+	private float nextActionTime = 1.0f;
 	public int damagePerSecond = 10;
 	private float period = 1.0f;
 	private float helperAgroTime = 0.0f;
@@ -85,7 +85,7 @@ public class AIEnemy : MonoBehaviour
 			else
 			{
 				helperAgroTime = 0.0f;
-				nextActionTime = 0.0f;
+				nextActionTime = 1.0f;
 			}
 
 			helperIdleTime = 0.0f;

@@ -37,42 +37,64 @@ public class Player : MonoBehaviour
 
 	public void TakeDamage(float p_damage)
 	{
-		currentHealth -= p_damage;
+		if (currentHealth - p_damage < 0)
+        {
+			currentHealth = 0;
+        } else
+        {
+			currentHealth -= p_damage;
+		}
 
 		healthBar.SetHealth(currentHealth);
 	}
 
 	public void Heal(float p_heal)
 	{
-		currentHealth += p_heal;
+		if (currentHealth + p_heal >= 100)
+        {
+			currentHealth = 100;
+		} else
+        {
+			currentHealth += p_heal;
+		}
 
 		healthBar.SetHealth(currentHealth);
 	}
 
 	public void Hungry(float p_hunger)
 	{
-		currentHunger -= p_hunger;
-
-		hungerBar.SetHunger(currentHunger);
-	}
-
-	public void Eat(float p_eat)
-	{
-		currentHunger += p_eat;
+		if (currentHunger - p_hunger < 0)
+		{
+			currentHunger = 0;
+		}
+		else
+		{
+			currentHunger -= p_hunger;
+		}
 
 		hungerBar.SetHunger(currentHunger);
 	}
 
 	public void usingStamina(float p_staminaUsed)
 	{
-		currentStamina -= p_staminaUsed;
+		if (currentStamina - p_staminaUsed < 0)
+		{
+			currentStamina = 0;
+		}
+		else
+		{
+			currentStamina -= p_staminaUsed;
+		}
 
 		staminaBar.SetStamina(currentStamina);
 	}
 
 	public void addStamina(float p_addstamina)
 	{
-		currentStamina += p_addstamina;
+		if (currentStamina + p_addstamina >= 100)
+			currentStamina = 100;
+		else
+			currentStamina += p_addstamina;
 
 		staminaBar.SetStamina(currentStamina);
 	}

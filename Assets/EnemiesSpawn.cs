@@ -36,18 +36,4 @@ public class EnemiesSpawn : MonoBehaviour
             }
         }
     }
-
-    IEnumerator EnemyDrop()
-    {
-        while (enemyCount < nbOfEnemies)
-        {
-            var xPos = Random.Range(minxPos, maxxPos);
-            var zPos = Random.Range(minzPos, maxzPos);
-            var wolf = Instantiate(enemy, new Vector3(xPos, yPos, zPos), Quaternion.identity);
-            wolf.SetActive(true);
-            yield return new WaitForSeconds(timeToWaitBetweenEachEnemyCreation);
-            enemyCount += 1;
-        }
-    }
-
 }
