@@ -1,23 +1,18 @@
 using UnityEngine;
 
-public class ItemPickup : Interactable {
+public class ItemPickup : MonoBehaviour
+{
+    public Player player;
+    public GameObject myPrefab;
 
-	public Item item;	
+    private void Awake()
+    {
+    }
 
-	public override void Interact()
-	{
-		base.Interact();
-
-		PickUp();	
-	}
-
-	void PickUp ()
-	{
-		Debug.Log("Picking up " + item.name);
-		bool wasPickedUp = Inventory.instance.Add(item);	
-
-		if (wasPickedUp)
-			Destroy(gameObject);	
-	}
+    private void OnTriggerEnter(Collider other)
+    {
+        player.addHunger(20);
+        Destroy(gameObject);
+    }
 
 }

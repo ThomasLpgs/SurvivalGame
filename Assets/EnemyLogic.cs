@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLogic : MonoBehaviour
 {
-
+    
     public int health = 10;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,9 @@ public class EnemyLogic : MonoBehaviour
 
         if (health <= 0)
         {
+            Vector3 posWolf = gameObject.transform.position;
+            Debug.Log("pos wolf" + posWolf);
+
             Destroy(gameObject);
             //EnemiesSpawn.enemyCount -= 1;
         }
