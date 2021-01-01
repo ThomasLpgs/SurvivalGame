@@ -83,6 +83,8 @@ public class Player : MonoBehaviour
             currentHunger = 100;
         else
             currentHunger += p_addHunger;
+
+		hungerBar.SetHunger(currentHunger);
     }
 
 }
