@@ -13,15 +13,32 @@ public class EnemiesSpawn : MonoBehaviour
     public int yPos = 52;
     public int nbOfEnemies = 10;
     public float timeToWaitBetweenEachEnemyCreation = 1f;
-    
-    void Start()
+    public int enemyCount = 0;
+
+    private float helperTime = 0.0f;
+    private float period = 1.0f;
+    private float nextActionTime = 0.0f;
+
+    void Update()
     {
-        StartCoroutine(EnemyDrop());
+        if (enemyCount < nbOfEnemies)
+        {
+            helperTime += Time.deltaTime;
+            if (helperTime > nextActionTime)
+            {
+                nextActionTime += period;
+                // execute block of code here
+                var xPos = Random.Range(minxPos, maxxPos);
+                var zPos = Random.Range(minzPos, maxzPos);
+                var wolf = Instantiate(enemy, new Vector3(xPos, yPos, zPos), Quaternion.identity);
+                wolf.SetActive(true);
+                enemyCount += 1;
+            }
+        }
     }
 
     IEnumerator EnemyDrop()
     {
-        int enemyCount = 0;
         while (enemyCount < nbOfEnemies)
         {
             var xPos = Random.Range(minxPos, maxxPos);
