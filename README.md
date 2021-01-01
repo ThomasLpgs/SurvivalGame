@@ -16,12 +16,19 @@ La barre de stamina se vide quand on court, saute, attaque ... On peut regagner 
 
 ### Déplacement joueur
 Z - Avancer
+
 Q - Aller à gauche
+
 D - Aller à droite
+
 S - Aller en arrière
+
 SHIFT + Z - Courrir
+
 ESPACE - Sauter
+
 Clic gauche - coup de pied en bas
+
 Courrir + clic gauche - coup de pied en hauteur
 
 ### IA Ennemis
