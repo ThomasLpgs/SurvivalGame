@@ -32,7 +32,7 @@ Clic gauche - coup de pied en bas
 Courrir + clic gauche - coup de pied en hauteur
 
 ### IA Ennemis
-On peut rencontrer des loups sur la map qui se déplacent librement puis qui, d'abord nous regarde si on se rapprochent d'eux et ensuite nous attaque si l'on est trop près. Quand ils attaquent on perd 10 points de vie par secondes. Les loups meurent quand on les attaque et ils nous drop un morceau de viande.
+On peut rencontrer des loups sur la map qui se déplacent librement puis qui, d'abord nous regardent si on se rapprochent d'eux et ensuite nous attaquent si l'on est trop près. Quand ils attaquent on perd 10 points de vie par secondes. Les loups meurent quand on les attaque et ils nous drop un morceau de viande.
 
 Quand on marche sur un morceau de viande, on regagne 20 points dans notre barre de faim et le morceau de viande disparaît.
 
