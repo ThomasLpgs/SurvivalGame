@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    private float helperTime = 0.0f;
+    private float period = 1.0f;
+    private float nextActionTime = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if(Input.GetKey(KeyCode.LeftShift) && z == 1)
             {
-                if(player.currentStamina > 0 && player.currentHunger > 0)
+                if(player.currentStamina > 5 && player.currentHunger > 0)
                 {
                     speed = sprintSpeed;
                     anim.SetBool("isrunning", true);
@@ -112,18 +116,34 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetTrigger("lowkick");
             
             }
-            /*if(player.currentHunger == 0)
+
+            if(player.currentHunger == 0)
             {
-                player.TakeDamage(Time.deltaTime * 5);
+                helperTime += Time.deltaTime;
+                if (helperTime > nextActionTime)
+                {
+                    nextActionTime += period;
+                    // execute block of code here
+                    player.TakeDamage(2);
+                }
             }
-            else if(player.currentHunger == 100)
+            else if(player.currentHunger >= 90)
             {
-                player.Heal(Time.deltaTime * 8);
-            }*/
+                helperTime += Time.deltaTime;
+                if (helperTime > nextActionTime)
+                {
+                    nextActionTime += period;
+                    // execute block of code here
+                    player.Heal(2);
+                }
+            }
+            else
+            {
+                helperTime = 0.0f;
+                period = 1.0f;
+                nextActionTime = 0.0f;
+            }
         }
-
-        
-
 
         velocity.y += gravity * Time.deltaTime;
 
