@@ -3624,8 +3624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c183dbf42bc4a01ae40ba40e15c87a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meat: {fileID: 1141407224}
-  health: 10
 --- !u!114 &1230677517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4513,7 +4511,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1065244652}
-  menuUI: {fileID: 0}
 --- !u!4 &1817579909
 Transform:
   m_ObjectHideFlags: 0
