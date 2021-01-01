@@ -20,10 +20,9 @@ public class AIEnemy : MonoBehaviour
 	private float helperIdleTime = 0.0f;
 	private float idlePeriod = 5.0f;
 	private float nextActionTimeIdle = 0.0f;
+	public EnemiesSpawn enemiesSpawn;
 
-	private float helperDeadTime = 0.0f;
-	private float deadPeriod = 1.0f;
-	private float nextActionTimeDead = 1.0f;
+	
 
 	private bool idle = true;
 	public int gravity = -29;
@@ -169,7 +168,7 @@ public class AIEnemy : MonoBehaviour
 			var newMeat = Instantiate(meat, posWolf, Quaternion.identity);
 			newMeat.SetActive(true);
 			Destroy(gameObject);
-			//EnemiesSpawn.enemyCount -= 1;
+			enemiesSpawn.enemyCount -= 1;
 		}
 	}
 
