@@ -20,6 +20,11 @@ public class AIEnemy : MonoBehaviour
 	private float helperIdleTime = 0.0f;
 	private float idlePeriod = 5.0f;
 	private float nextActionTimeIdle = 0.0f;
+
+	private float helperDeadTime = 0.0f;
+	private float deadPeriod = 1.0f;
+	private float nextActionTimeDead = 1.0f;
+
 	private bool idle = true;
 	public int gravity = -29;
 	private Vector3 moveDirection = Vector3.zero;
@@ -28,6 +33,8 @@ public class AIEnemy : MonoBehaviour
 	public float groundDistance = 0.0f;
 	public LayerMask groundMask;
 	private float timeToChangeDirection;
+	public GameObject meat;
+	public int health = 10;
 
 	Vector3 velocity;
 	bool isGrounded;
@@ -152,5 +159,18 @@ public class AIEnemy : MonoBehaviour
 		//transform.Translate(Vector3.forward * move_speed * Time.deltaTime);
 	}
 
-	
+	public void ApplyDamage(int damage)
+	{
+		health -= damage;
+
+		if (health <= 0)
+		{
+			Vector3 posWolf = gameObject.transform.position;
+			var newMeat = Instantiate(meat, posWolf, Quaternion.identity);
+			newMeat.SetActive(true);
+			Destroy(gameObject);
+			//EnemiesSpawn.enemyCount -= 1;
+		}
+	}
+
 }

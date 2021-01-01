@@ -1,23 +1,40 @@
 using UnityEngine;
 
-public class ItemPickup : Interactable {
+public class ItemPickup : MonoBehaviour
+{
+    public Player player;
+    public GameObject myPrefab;
 
-	public Item item;	
+    private float helperDeadTime = 0.0f;
+    private float deadPeriod = 1.0f;
+    private float nextActionTimeDead = 1.0f;
+    private bool canPickup;
 
-	public override void Interact()
-	{
-		base.Interact();
+    private void Update()
+    {
+        if (canPickup)
+            return;
 
-		PickUp();	
-	}
+        helperDeadTime += Time.deltaTime;
+        if (helperDeadTime > nextActionTimeDead)
+        {
+            nextActionTimeDead += deadPeriod;
+            // execute block of code here
+            canPickup = true;
+        }
+    }
 
-	void PickUp ()
-	{
-		Debug.Log("Picking up " + item.name);
-		bool wasPickedUp = Inventory.instance.Add(item);	
+    private void Awake()
+    {
+    }
 
-		if (wasPickedUp)
-			Destroy(gameObject);	
-	}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name != "Player" || !canPickup)
+            return;
+
+        player.addHunger(20);
+        Destroy(gameObject);
+    }
 
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -79,5 +77,14 @@ public class Player : MonoBehaviour
 		staminaBar.SetStamina(currentStamina);
 	}
 
+    public void addHunger(float p_addHunger)
+    {
+        if (currentHunger + p_addHunger >= 100)
+            currentHunger = 100;
+        else
+            currentHunger += p_addHunger;
+
+		hungerBar.SetHunger(currentHunger);
+    }
 
 }
