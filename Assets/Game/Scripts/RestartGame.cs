@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuUI : MonoBehaviour
+public class RestartGame : MonoBehaviour
 {
 
     public Player player;
-    public GameObject menuUI;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +17,9 @@ public class MenuUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.currentHealth <= 0)
+        if (player.currentHealth < 1)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //menuUI.SetActive(true);
         }
     }
 }

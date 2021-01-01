@@ -3508,7 +3508,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100132, guid: 91d2fb8fbb39fab44b86ce07763f1e74, type: 3}
       propertyPath: m_Name
-      value: Wolf (1)
+      value: Wolf
       objectReference: {fileID: 0}
     - target: {fileID: 100132, guid: 91d2fb8fbb39fab44b86ce07763f1e74, type: 3}
       propertyPath: m_IsActive
